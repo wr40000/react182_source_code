@@ -22,8 +22,8 @@ const ReactElement = (type, key, ref, props) => {
   return element;
 };
 
+// 从内向外构建虚拟 DOM -> jsxDEV会先处理最内部的节点
 export function jsxDEV(type, config, maybeKey) {
-  debugger;
   let propName;
   const props = {};
   let key = null;
