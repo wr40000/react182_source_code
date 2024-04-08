@@ -10,6 +10,7 @@ function createChildReconciler(shouldTrackSideEffects) {
     return created;
   }
   function placeSingleChild(newFiber) {
+    // 初次渲染先添加节点的子节点无副作用
     if (shouldTrackSideEffects) newFiber.flags |= Placement;
     return newFiber;
   }
@@ -47,6 +48,7 @@ function createChildReconciler(shouldTrackSideEffects) {
     let previousNewFiber = null;
     let newIdx = 0;
     for (; newIdx < newChildren.length; newIdx++) {
+      // 该步确定子fiber的return
       const newFiber = createChild(returnFiber, newChildren[newIdx]);
       if (newFiber === null) {
         continue;
