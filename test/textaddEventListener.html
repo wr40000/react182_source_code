@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="div_">DIV</div>
+        <h1 class="h1_">H1</h1>
+    </div>
+    <script>
+        const box = document.querySelector(".container")
+        // 当点击 H1 时，e.target是 h1_ 对应的真实DOM元素，e.currentTarget是 container 对应的真实DOM元素
+        // 当点击 DIV 时，e.target是 div_ 对应的真实DOM元素，e.currentTarget是 container 对应的真实DOM元素
+        box.addEventListener('click', (e) => { console.log(e.currentTarget, e.target); })
+    </script>
+</body>
+
+</html>

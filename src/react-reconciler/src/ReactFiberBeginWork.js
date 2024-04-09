@@ -46,7 +46,6 @@ export function beginWork(current, workInProgress) {
   // logger(" ".repeat(indent.number)  "beginWork", workInProgress);
   switch (workInProgress.tag) {
        case IndeterminateComponent: {
-        debugger
            return mountIndeterminateComponent(
              current,
              workInProgress,

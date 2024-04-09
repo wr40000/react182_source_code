@@ -27,7 +27,10 @@ function performConcurrentWorkOnRoot(root) {
   renderRootSync(root);
   const finishedWork = root.current.alternate;
   printFiber(finishedWork);
-  console.log(`~~~~~~~~~~~~~~~~~~~~~~~~~~~~commitRoot~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`);
+  console.log(
+    `~~~~~~~~~~~~~~~~~~~~~~~~~~~~commitRoot~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+  );
+  console.log("root: ", root);
   root.finishedWork = finishedWork;
   commitRoot(root);
 }
@@ -57,7 +60,7 @@ function printFiber(fiber) {
       fiber.memoizedProps
     );
     if (fiber.deletions) {
-      for (let i = 0; i < fiber.deletions.length; i) {
+      for (let i = 0; i < fiber.deletions.length; i++) {
         const childToDelete = fiber.deletions[i];
         console.log(
           getTag(childToDelete.tag),
@@ -130,6 +133,7 @@ function performUnitOfWork(unitOfWork) {
   const next = beginWork(current, unitOfWork); //beginWork 返回的是VirDOM的第一个孩子
   unitOfWork.memoizedProps = unitOfWork.pendingProps;
   if (next === null) {
+    debugger; // 完成工作单元，初渲染该创建真实DOM了
     completeUnitOfWork(unitOfWork);
   } else {
     workInProgress = next; // 递归处理child
